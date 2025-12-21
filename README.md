@@ -1,1 +1,4 @@
-# Tommy-Hyland.github.io
+Nightreign Randomizer
+---------------------
+
+https://tommy-hyland.github.io/
