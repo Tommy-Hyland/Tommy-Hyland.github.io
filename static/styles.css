@@ -63,23 +63,47 @@ body::before{
 body::after{
   content:"";
   position:fixed;
-  inset:0;
+  inset:-30% 0 -10% 0; 
   pointer-events:none;
+  z-index:1;
+
   background-image:
-    radial-gradient(circle, rgba(255,255,255,0.06) 0 1px, rgba(0,0,0,0) 2px),
-    radial-gradient(circle, rgba(199,165,91,0.05) 0 1px, rgba(0,0,0,0) 2px),
-    radial-gradient(circle, rgba(255,96,56,0.04) 0 1px, rgba(0,0,0,0) 2px);
-  background-size: 260px 260px, 340px 340px, 420px 420px;
-  background-position: 0 0, 80px 120px, 200px 40px;
-  opacity: 0.30;
+    radial-gradient(circle, rgba(255,140,80,0.16) 0 1px, rgba(0,0,0,0) 2px),
+    radial-gradient(circle, rgba(199,165,91,0.12) 0 1px, rgba(0,0,0,0) 2px),
+    radial-gradient(circle, rgba(255,96,56,0.10) 0 1px, rgba(0,0,0,0) 2px);
+
+  background-size:
+    180px 240px,
+    240px 320px,
+    320px 420px;
+
+  background-position:
+    0 100%,
+    60px 110%,
+    140px 120%;
+
+  opacity: 0.75;
+  filter: blur(0.2px);
   mix-blend-mode: screen;
-  animation: ashDrift 18s linear infinite;
+
+  animation:
+    emberRise1 14s linear infinite,
+    emberSway 5.5s ease-in-out infinite;
 }
 
-@keyframes ashDrift{
-  from{ transform: translate3d(0,0,0); }
-  to{ transform: translate3d(-160px, 120px, 0); }
+
+@keyframes emberRise1{
+  from{ transform: translate3d(0, 0, 0); }
+  to{ transform: translate3d(0, -45%, 0); }
 }
+
+
+@keyframes emberSway{
+  0%{ filter: blur(0.2px); }
+  50%{ transform: translate3d(-10px, 0, 0); }
+  100%{ filter: blur(0.2px); }
+}
+
 
 .wrap{
   max-width:1120px;
@@ -257,9 +281,9 @@ button.primary{
 
   font-family: var(--mono);
   font-size: 15px;
-  line-height: 1;               
+  line-height: 1;
   letter-spacing: 0.25px;
-  transform: translateY(-1px);  
+  transform: translateY(-1px);
 
   color: var(--text);
   opacity: 0.96;
