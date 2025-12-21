@@ -28,7 +28,6 @@ const state = {
 
 const REPEATS = 12;
 
-// ---------- helpers ----------
 function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
 function randInt(n){ return Math.floor(Math.random() * n); }
@@ -52,7 +51,6 @@ function setRolling(isRolling) {
   els.btnCopy.disabled = isRolling || !state.canCopy;
 }
 
-// ---------- strip builders ----------
 function buildIconStrip(stripEl, pool) {
   stripEl.innerHTML = "";
   for (let r = 0; r < REPEATS; r++) {
@@ -87,7 +85,6 @@ function buildNameStrip(stripEl, pool) {
   }
 }
 
-// Keep translateY within [-stripHeight, 0] for DISPLAY only
 function wrapY(y, stripHeight) {
   if (stripHeight <= 0) return y;
   let w = y % stripHeight;
@@ -95,12 +92,6 @@ function wrapY(y, stripHeight) {
   return w;
 }
 
-/**
- * Stable reel spin:
- * - animate UNWRAPPED y (_yu)
- * - render WRAPPED y (wrapY)
- * - no teleport on spin #2+
- */
 function spinStrip({ stripEl, itemHeight, pool, targetSlug, durationMs }) {
   return new Promise((resolve) => {
     const poolLen = pool.length;
@@ -143,7 +134,6 @@ function spinStrip({ stripEl, itemHeight, pool, targetSlug, durationMs }) {
   });
 }
 
-// ---------- landing without animation (init / mode switch) ----------
 function landToSlug(stripEl, itemHeight, pool, slug) {
   const idx = Math.max(0, pool.findIndex(x => x.slug === slug));
   const yu = -idx * itemHeight;
@@ -154,7 +144,6 @@ function landToSlug(stripEl, itemHeight, pool, slug) {
   stripEl.style.transform = `translateY(${stripEl._y}px)`;
 }
 
-// ---------- Great Hollow rule ----------
 function isGreatHollowEarth(earthObj) {
   if (!earthObj) return false;
   const n = String(earthObj.name || "").toLowerCase();
@@ -172,11 +161,9 @@ function coerceEarth(bossObj, earthObj) {
   if (!isGreatHollowEarth(earthObj)) return earthObj;
   if (bossAllowsGreatHollow(bossObj)) return earthObj;
 
-  // Not allowed => regular map
   return DATA.earth.find(e => e.slug === "none") || DATA.earth[0];
 }
 
-// ---------- roll logic (static, no dupes) ----------
 function rollLocal(count) {
   if (!Array.isArray(DATA.nightfarers) || DATA.nightfarers.length < count) {
     throw new Error("Not enough Nightfarers in DATA to fill this party size.");
@@ -184,11 +171,9 @@ function rollLocal(count) {
 
   const boss = choice(DATA.bosses);
 
-  // Earth roll, then apply Great Hollow restriction
   let earth = choice(DATA.earth);
   earth = coerceEarth(boss, earth);
 
-  // No duplicate heroes: sample without replacement
   const pool = DATA.nightfarers.slice();
   const picks = [];
   for (let i = 0; i < count; i++) {
@@ -200,7 +185,6 @@ function rollLocal(count) {
   return { boss, earth, picks };
 }
 
-// ---------- party UI ----------
 function renderParty(count) {
   els.party.innerHTML = "";
 
@@ -279,7 +263,6 @@ function landDefaultsForMode() {
     state.earth = earthDefault;
   }
 
-  // Player defaults: Wylder if present, otherwise first nightfarer
   const defSlug = DATA.nightfarers.some(n => n.slug === "wylder") ? "wylder" : DATA.nightfarers[0].slug;
   const rows = Array.from(els.party.children);
   for (let i = 0; i < rows.length; i++) {
@@ -289,7 +272,6 @@ function landDefaultsForMode() {
 }
 
 function setMode(count) {
-  // Prevent switching mid-roll (should be disabled anyway)
   if (els.btnRoll.disabled) return;
 
   state.canCopy = false;
@@ -308,7 +290,6 @@ function setMode(count) {
   els.btnCopy.disabled = true;
 }
 
-// ---------- spins ----------
 async function spinBoss(result) {
   const tileH = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--tile"), 10) || 64;
   const nameH = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--reelItemH"), 10) || 52;
@@ -378,7 +359,7 @@ async function spinPlayers(result) {
   }
 }
 
-// ---------- actions ----------
+
 async function roll() {
   state.canCopy = false;
   setRolling(true);
@@ -422,7 +403,7 @@ function copyResults() {
   navigator.clipboard.writeText(lines.join("\n")).catch(() => {});
 }
 
-// ---------- init ----------
+
 function init() {
   buildIconStrip(els.bossIconStrip, DATA.bosses);
   buildNameStrip(els.bossNameStrip, DATA.bosses);
@@ -437,3 +418,4 @@ function init() {
 }
 
 init();
+
