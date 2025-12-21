@@ -28,7 +28,7 @@ body{
     radial-gradient(900px 500px at 85% 25%, rgba(255,96,56,0.08) 0%, rgba(0,0,0,0.0) 55%),
     radial-gradient(1100px 520px at 50% 92%, rgba(255,110,70,0.12) 0%, rgba(0,0,0,0.0) 58%),
     linear-gradient(180deg, rgba(10,11,15,0.78), rgba(5,6,10,0.85)),
-    url("./tex/stone.webp");
+    url("./tex/background.webp");
   background-size: auto, auto, auto, auto, cover;
   background-position: center, center, center, center, center;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
@@ -467,3 +467,4 @@ button.primary{
 @media (max-width: 860px){
   .cards{ grid-template-columns:1fr; }
 }
+
