@@ -28,6 +28,7 @@ const state = {
 
 const REPEATS = 12;
 
+
 function sleep(ms){ return new Promise(r => setTimeout(r, ms)); }
 function easeOutCubic(t){ return 1 - Math.pow(1 - t, 3); }
 function randInt(n){ return Math.floor(Math.random() * n); }
@@ -50,6 +51,15 @@ function setRolling(isRolling) {
   els.btnRoll.disabled = isRolling;
   els.btnCopy.disabled = isRolling || !state.canCopy;
 }
+
+
+function glint(el){
+  el.classList.remove("glint");
+  void el.offsetWidth;
+  el.classList.add("glint");
+  setTimeout(() => el.classList.remove("glint"), 650);
+}
+
 
 function buildIconStrip(stripEl, pool) {
   stripEl.innerHTML = "";
@@ -85,12 +95,14 @@ function buildNameStrip(stripEl, pool) {
   }
 }
 
+
 function wrapY(y, stripHeight) {
   if (stripHeight <= 0) return y;
   let w = y % stripHeight;
   if (w > 0) w -= stripHeight;
   return w;
 }
+
 
 function spinStrip({ stripEl, itemHeight, pool, targetSlug, durationMs }) {
   return new Promise((resolve) => {
@@ -103,7 +115,7 @@ function spinStrip({ stripEl, itemHeight, pool, targetSlug, durationMs }) {
 
     const startUnwrapped = (typeof stripEl._yu === "number") ? stripEl._yu : (stripEl._y || 0);
 
-    const laps = 4 + Math.floor(Math.random() * 2); // 4–5 laps
+    const laps = 4 + Math.floor(Math.random() * 2);
     const travelRef = startUnwrapped - laps * period;
 
     const k = Math.round((baseTarget - travelRef) / period);
@@ -134,6 +146,7 @@ function spinStrip({ stripEl, itemHeight, pool, targetSlug, durationMs }) {
   });
 }
 
+
 function landToSlug(stripEl, itemHeight, pool, slug) {
   const idx = Math.max(0, pool.findIndex(x => x.slug === slug));
   const yu = -idx * itemHeight;
@@ -143,6 +156,7 @@ function landToSlug(stripEl, itemHeight, pool, slug) {
   stripEl._y = wrapY(yu, stripHeight);
   stripEl.style.transform = `translateY(${stripEl._y}px)`;
 }
+
 
 function isGreatHollowEarth(earthObj) {
   if (!earthObj) return false;
@@ -164,6 +178,7 @@ function coerceEarth(bossObj, earthObj) {
   return DATA.earth.find(e => e.slug === "none") || DATA.earth[0];
 }
 
+
 function rollLocal(count) {
   if (!Array.isArray(DATA.nightfarers) || DATA.nightfarers.length < count) {
     throw new Error("Not enough Nightfarers in DATA to fill this party size.");
@@ -184,6 +199,7 @@ function rollLocal(count) {
 
   return { boss, earth, picks };
 }
+
 
 function renderParty(count) {
   els.party.innerHTML = "";
@@ -241,7 +257,7 @@ function resetAllGlowAndSpinClasses() {
     ...rows.flatMap(r => [r._tile, r._reel])
   ];
   for (const el of targets) {
-    el.classList.remove("selected", "spinning");
+    el.classList.remove("selected", "spinning", "glint");
     if (el.classList.contains("tile")) el.classList.remove("spinning-tile");
   }
 }
@@ -290,6 +306,7 @@ function setMode(count) {
   els.btnCopy.disabled = true;
 }
 
+
 async function spinBoss(result) {
   const tileH = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--tile"), 10) || 64;
   const nameH = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--reelItemH"), 10) || 52;
@@ -312,6 +329,9 @@ async function spinBoss(result) {
 
   setSelected(els.bossTile, true);
   setSelected(els.bossNameReel, true);
+
+  glint(els.bossTile);
+  glint(els.bossNameReel);
 }
 
 async function spinEarth(result) {
@@ -324,6 +344,7 @@ async function spinEarth(result) {
   setSpinning(els.earthNameReel, false);
 
   setSelected(els.earthNameReel, true);
+  glint(els.earthNameReel);
 }
 
 async function spinPlayers(result) {
@@ -354,6 +375,9 @@ async function spinPlayers(result) {
 
     setSelected(row._tile, true);
     setSelected(row._reel, true);
+
+    glint(row._tile);
+    glint(row._reel);
 
     await sleep(120);
   }
@@ -418,4 +442,3 @@ function init() {
 }
 
 init();
-
