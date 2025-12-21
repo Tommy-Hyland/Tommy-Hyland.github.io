@@ -63,43 +63,20 @@ html::after{
   z-index:1;
   transform: translateZ(0);
   will-change: background-position;
-  opacity: 0.18;
+  opacity: 0.08;
   mix-blend-mode: screen;
-  filter: blur(0.18px);
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
+  filter: blur(0.16px);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 22%, rgba(0,0,0,1) 78%, rgba(0,0,0,0) 100%);
   background-repeat: repeat;
   background-image:
-    radial-gradient(circle, rgba(255,230,190,0.70) 0 0.9px, rgba(255,140,85,0.18) 3.2px, rgba(0,0,0,0) 6.2px),
-    radial-gradient(circle, rgba(255,215,175,0.62) 0 0.85px, rgba(255,130,80,0.16) 3.0px, rgba(0,0,0,0) 5.8px),
-    radial-gradient(circle, rgba(245,205,165,0.52) 0 0.8px, rgba(220,165,105,0.14) 3.1px, rgba(0,0,0,0) 6.0px),
-    radial-gradient(circle, rgba(255,220,180,0.58) 0 0.85px, rgba(255,135,82,0.16) 3.0px, rgba(0,0,0,0) 5.9px),
-    radial-gradient(circle, rgba(240,200,155,0.46) 0 0.75px, rgba(199,165,91,0.13) 3.0px, rgba(0,0,0,0) 5.8px),
-    radial-gradient(circle, rgba(255,210,170,0.56) 0 0.82px, rgba(255,145,90,0.16) 3.2px, rgba(0,0,0,0) 6.1px),
-    radial-gradient(circle, rgba(245,205,160,0.42) 0 0.7px, rgba(220,170,105,0.12) 3.0px, rgba(0,0,0,0) 5.8px),
-    radial-gradient(circle, rgba(255,205,160,0.48) 0 0.75px, rgba(255,125,75,0.14) 3.0px, rgba(0,0,0,0) 5.8px);
-
-  background-size:
-    90px 140px,
-    110px 170px,
-    80px 130px,
-    120px 190px,
-    95px 155px,
-    105px 165px,
-    85px 135px,
-    115px 180px;
-
-  background-position:
-    12px 120%,
-    48px 135%,
-    22px 150%,
-    70px 128%,
-    18px 142%,
-    58px 160%,
-    36px 125%,
-    84px 152%;
-
-  animation: emberDriftFar 12.8s linear infinite;
+    radial-gradient(circle, rgba(255,220,175,0.40) 0 0.75px, rgba(255,140,85,0.10) 2.6px, rgba(0,0,0,0) 5.4px),
+    radial-gradient(circle, rgba(255,205,160,0.32) 0 0.70px, rgba(255,130,80,0.09) 2.5px, rgba(0,0,0,0) 5.2px),
+    radial-gradient(circle, rgba(245,205,165,0.26) 0 0.65px, rgba(220,165,105,0.08) 2.6px, rgba(0,0,0,0) 5.3px),
+    radial-gradient(circle, rgba(235,195,150,0.22) 0 0.62px, rgba(199,165,91,0.07) 2.5px, rgba(0,0,0,0) 5.2px);
+  background-size: 160px 240px, 190px 280px, 175px 260px, 210px 310px;
+  background-position: 22px 130%, 68px 154%, 44px 168%, 96px 146%;
+  animation: emberDriftFarSoft 18.5s linear infinite;
 }
 
 body::after{
@@ -110,105 +87,31 @@ body::after{
   z-index:1;
   transform: translateZ(0);
   will-change: background-position;
-  opacity: 0.16;
+  opacity: 0.06;
   mix-blend-mode: screen;
-  filter: blur(0.16px);
-  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 16%, rgba(0,0,0,1) 76%, rgba(0,0,0,0) 100%);
-  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 16%, rgba(0,0,0,1) 76%, rgba(0,0,0,0) 100%);
+  filter: blur(0.14px);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 76%, rgba(0,0,0,0) 100%);
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 18%, rgba(0,0,0,1) 76%, rgba(0,0,0,0) 100%);
   background-repeat: repeat;
   background-image:
-    radial-gradient(circle, rgba(255,240,200,0.78) 0 1.05px, rgba(255,155,95,0.22) 3.6px, rgba(0,0,0,0) 7px),
-    radial-gradient(circle, rgba(255,225,185,0.66) 0 0.95px, rgba(255,140,85,0.20) 3.4px, rgba(0,0,0,0) 6.6px),
-    radial-gradient(circle, rgba(255,210,170,0.56) 0 0.9px, rgba(255,130,78,0.18) 3.3px, rgba(0,0,0,0) 6.4px),
-    radial-gradient(circle, rgba(245,205,165,0.50) 0 0.85px, rgba(220,170,105,0.16) 3.4px, rgba(0,0,0,0) 6.6px),
-    radial-gradient(circle, rgba(255,235,195,0.70) 0 1.0px, rgba(255,150,92,0.20) 3.6px, rgba(0,0,0,0) 6.9px),
-    radial-gradient(circle, rgba(255,220,180,0.60) 0 0.9px, rgba(255,135,82,0.18) 3.4px, rgba(0,0,0,0) 6.6px),
-    radial-gradient(circle, rgba(245,205,160,0.46) 0 0.82px, rgba(199,165,91,0.15) 3.4px, rgba(0,0,0,0) 6.6px),
-    radial-gradient(circle, rgba(255,215,175,0.56) 0 0.9px, rgba(255,125,75,0.18) 3.3px, rgba(0,0,0,0) 6.4px),
-    radial-gradient(circle, rgba(255,230,190,0.62) 0 0.95px, rgba(255,145,90,0.18) 3.5px, rgba(0,0,0,0) 6.8px),
-    radial-gradient(circle, rgba(235,195,150,0.44) 0 0.8px, rgba(220,170,105,0.14) 3.3px, rgba(0,0,0,0) 6.4px);
-
-  background-size:
-    70px 105px,
-    85px 125px,
-    78px 118px,
-    92px 140px,
-    74px 112px,
-    88px 132px,
-    80px 122px,
-    96px 148px,
-    76px 114px,
-    90px 138px;
-
-  background-position:
-    18px 130%,
-    55px 148%,
-    34px 160%,
-    76px 138%,
-    26px 152%,
-    62px 168%,
-    40px 142%,
-    84px 176%,
-    12px 156%,
-    70px 164%;
-
-  animation: emberDriftNear 9.9s linear infinite;
+    radial-gradient(circle, rgba(255,230,190,0.44) 0 0.85px, rgba(255,155,95,0.11) 2.9px, rgba(0,0,0,0) 6.1px),
+    radial-gradient(circle, rgba(255,210,170,0.30) 0 0.75px, rgba(255,135,82,0.10) 2.8px, rgba(0,0,0,0) 5.9px),
+    radial-gradient(circle, rgba(245,205,160,0.22) 0 0.65px, rgba(220,170,105,0.08) 2.8px, rgba(0,0,0,0) 5.9px),
+    radial-gradient(circle, rgba(235,195,150,0.18) 0 0.60px, rgba(199,165,91,0.07) 2.7px, rgba(0,0,0,0) 5.8px);
+  background-size: 130px 200px, 150px 230px, 140px 215px, 165px 250px;
+  background-position: 18px 148%, 60px 170%, 34px 156%, 88px 182%;
+  animation: emberDriftNearSoft 14.8s linear infinite;
 }
 
-@keyframes emberDriftFar{
-  0%{
-    background-position:
-      12px 120%,
-      48px 135%,
-      22px 150%,
-      70px 128%,
-      18px 142%,
-      58px 160%,
-      36px 125%,
-      84px 152%;
-  }
-  100%{
-    background-position:
-      36px -40%,
-      10px -58%,
-      58px -72%,
-      30px -50%,
-      74px -66%,
-      22px -84%,
-      64px -46%,
-      14px -76%;
-  }
+@keyframes emberDriftFarSoft{
+  0%{ background-position: 22px 130%, 68px 154%, 44px 168%, 96px 146%; }
+  100%{ background-position: 54px -70%, 12px -92%, 82px -112%, 28px -86%; }
 }
 
-@keyframes emberDriftNear{
-  0%{
-    background-position:
-      18px 130%,
-      55px 148%,
-      34px 160%,
-      76px 138%,
-      26px 152%,
-      62px 168%,
-      40px 142%,
-      84px 176%,
-      12px 156%,
-      70px 164%;
-  }
-  100%{
-    background-position:
-      60px -70%,
-      16px -92%,
-      78px -112%,
-      30px -86%,
-      92px -104%,
-      10px -128%,
-      74px -96%,
-      22px -140%,
-      88px -108%,
-      40px -120%;
-  }
+@keyframes emberDriftNearSoft{
+  0%{ background-position: 18px 148%, 60px 170%, 34px 156%, 88px 182%; }
+  100%{ background-position: 70px -110%, 10px -132%, 94px -120%, 36px -148%; }
 }
-
 
 .wrap{
   max-width:1120px;
@@ -553,4 +456,5 @@ button.primary{
 @media (max-width: 860px){
   .cards{ grid-template-columns:1fr; }
 }
+
 
