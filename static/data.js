@@ -1,21 +1,17 @@
-// static/data.js
-// All images are WEBP
-// - Nightfarer portraits: ./static/portraits/<slug>.webp
-// - Expedition icons:     ./static/bosses/<Expedition Name>.webp
-
 window.__DATA__ = {
   nightfarers: [
-    { name: "Wylder",      slug: "wylder",      imgUrl: "./static/portraits/wylder.webp" },
-    { name: "Guardian",    slug: "guardian",    imgUrl: "./static/portraits/guardian.webp" },
-    { name: "Duchess",     slug: "duchess",     imgUrl: "./static/portraits/duchess.webp" },
-    { name: "Revenant",    slug: "revenant",    imgUrl: "./static/portraits/revenant.webp" },
-    { name: "Ironeye",     slug: "ironeye",     imgUrl: "./static/portraits/ironeye.webp" },
-    { name: "Raider",      slug: "raider",      imgUrl: "./static/portraits/raider.webp" },
-    { name: "Recluse",     slug: "recluse",     imgUrl: "./static/portraits/recluse.webp" },
-    { name: "Executor",    slug: "executor",    imgUrl: "./static/portraits/executor.webp" },
-    { name: "Undertaker",  slug: "undertaker",  imgUrl: "./static/portraits/undertaker.webp" },
-    { name: "Scholar",     slug: "scholar",     imgUrl: "./static/portraits/scholar.webp" },
-  ],
+  { name: "Wylder",     slug: "wylder",     imgUrl: "./static/portraits/Wylder.webp" },
+  { name: "Guardian",   slug: "guardian",   imgUrl: "./static/portraits/Guardian.webp" },
+  { name: "Duchess",    slug: "duchess",    imgUrl: "./static/portraits/Duchess.webp" },
+  { name: "Revenant",   slug: "revenant",   imgUrl: "./static/portraits/Revenant.webp" },
+  { name: "Ironeye",    slug: "ironeye",    imgUrl: "./static/portraits/Ironeye.webp" },
+  { name: "Raider",     slug: "raider",     imgUrl: "./static/portraits/Raider.webp" },
+  { name: "Recluse",    slug: "recluse",    imgUrl: "./static/portraits/Recluse.webp" },
+  { name: "Executor",   slug: "executor",   imgUrl: "./static/portraits/Executor.webp" },
+  { name: "Undertaker", slug: "undertaker", imgUrl: "./static/portraits/Undertaker.webp" },
+  { name: "Scholar",    slug: "scholar",    imgUrl: "./static/portraits/Scholar.webp" },
+],
+
 
   bosses: [
     { name: "Tricephalos",        slug: "tricephalos",         imgUrl: "./static/bosses/Tricephalos.webp" },
@@ -39,3 +35,4 @@ window.__DATA__ = {
     { name: "The Great Hollow",             slug: "the-great-hollow" },
   ],
 };
+
