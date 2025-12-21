@@ -60,11 +60,33 @@ body::before{
   opacity: 0.35;
 }
 
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.06) 0 1px, rgba(0,0,0,0) 2px),
+    radial-gradient(circle, rgba(199,165,91,0.05) 0 1px, rgba(0,0,0,0) 2px),
+    radial-gradient(circle, rgba(255,96,56,0.04) 0 1px, rgba(0,0,0,0) 2px);
+  background-size: 260px 260px, 340px 340px, 420px 420px;
+  background-position: 0 0, 80px 120px, 200px 40px;
+  opacity: 0.30;
+  mix-blend-mode: screen;
+  animation: ashDrift 18s linear infinite;
+}
+
+@keyframes ashDrift{
+  from{ transform: translate3d(0,0,0); }
+  to{ transform: translate3d(-160px, 120px, 0); }
+}
+
 .wrap{
   max-width:1120px;
   margin:0 auto;
   padding:24px;
   position:relative;
+  z-index:2;
 }
 
 
@@ -187,6 +209,7 @@ button.primary{
   overflow:hidden;
   display:grid;
   place-items:center;
+  position:relative;
 }
 .slot-tile{ padding:0; }
 .tile-window{ width:100%; height:100%; overflow:hidden; border-radius:12px; position:relative; }
@@ -228,21 +251,20 @@ button.primary{
 .name-item{
   height: var(--reelItemH);
   display:flex;
-  align-items:center;          /* keep vertical centering */
+  align-items:center;
   justify-content:flex-start;
   padding: 0 14px;
 
   font-family: var(--mono);
-  font-size: 15px;             /* slightly smaller = better optical center */
-  line-height: 1;              /* IMPORTANT: remove extra baseline space */
+  font-size: 15px;
+  line-height: 1;               
   letter-spacing: 0.25px;
+  transform: translateY(-1px);  
 
-  transform: translateY(-1px); /* subtle optical lift */
   color: var(--text);
   opacity: 0.96;
   text-shadow: 0 1px 0 rgba(0,0,0,0.6);
 }
-
 
 
 .reel .reel-window,
@@ -280,6 +302,44 @@ button.primary{
 .spinning-tile .tile-strip{ filter: blur(0.75px); }
 
 
+.reel.spinning{ animation: reelShake 180ms linear infinite; }
+.tile.spinning{ animation: reelShake 180ms linear infinite; }
+
+@keyframes reelShake{
+  0%{ transform: translateX(0px); }
+  25%{ transform: translateX(0.5px); }
+  50%{ transform: translateX(0px); }
+  75%{ transform: translateX(-0.5px); }
+  100%{ transform: translateX(0px); }
+}
+
+
+.reel.glint .reel-window::after,
+.tile.glint .tile-window::after{
+  content:"";
+  position:absolute;
+  inset:-30% -60%;
+  background: linear-gradient(
+    120deg,
+    rgba(0,0,0,0) 35%,
+    rgba(199,165,91,0.18) 45%,
+    rgba(255,96,56,0.10) 50%,
+    rgba(199,165,91,0.14) 55%,
+    rgba(0,0,0,0) 65%
+  );
+  transform: translateX(-40%) rotate(0.001deg);
+  animation: glintSweep 520ms ease-out;
+  pointer-events:none;
+  mix-blend-mode: screen;
+}
+
+@keyframes glintSweep{
+  from{ transform: translateX(-45%); opacity:0.0; }
+  10%{ opacity:1; }
+  to{ transform: translateX(45%); opacity:0.0; }
+}
+
+
 .party{ display:grid; gap:10px; }
 .party-row{
   display:grid;
@@ -294,6 +354,7 @@ button.primary{
     linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.16)),
     rgba(0,0,0,0.22);
 }
+
 .pname input{
   width:100%;
   padding:10px 12px;
@@ -317,5 +378,3 @@ button.primary{
 @media (max-width: 860px){
   .cards{ grid-template-columns:1fr; }
 }
-
-
