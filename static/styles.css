@@ -228,15 +228,21 @@ button.primary{
 .name-item{
   height: var(--reelItemH);
   display:flex;
-  align-items:center;
+  align-items:center;          /* keep vertical centering */
   justify-content:flex-start;
   padding: 0 14px;
+
   font-family: var(--mono);
+  font-size: 15px;             /* slightly smaller = better optical center */
+  line-height: 1;              /* IMPORTANT: remove extra baseline space */
   letter-spacing: 0.25px;
+
+  transform: translateY(-1px); /* subtle optical lift */
   color: var(--text);
   opacity: 0.96;
   text-shadow: 0 1px 0 rgba(0,0,0,0.6);
 }
+
 
 
 .reel .reel-window,
@@ -311,4 +317,5 @@ button.primary{
 @media (max-width: 860px){
   .cards{ grid-template-columns:1fr; }
 }
+
 
