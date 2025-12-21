@@ -67,7 +67,7 @@ body::before{
   position:relative;
 }
 
-/* Top */
+
 .top{
   display:flex; justify-content:space-between; align-items:center;
   gap:16px; margin-bottom:18px;
@@ -128,7 +128,7 @@ button.primary{
     rgba(0,0,0,0.18);
 }
 
-/* Cards */
+
 .cards{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -171,7 +171,7 @@ button.primary{
   align-items:center;
 }
 
-/* Tile reel */
+
 .tile{
   width: var(--tile);
   height: var(--tile);
@@ -195,7 +195,7 @@ button.primary{
 .tile-item img{ width:100%; height:100%; object-fit:cover; display:block; }
 .tile-item .fallback{ font-weight:900; letter-spacing:0.5px; opacity:0.95; }
 
-/* Name reel */
+
 .reel{
   border-radius: 12px;
   border: 1px solid var(--line);
@@ -238,13 +238,13 @@ button.primary{
   text-shadow: 0 1px 0 rgba(0,0,0,0.6);
 }
 
-/* Smooth glow changes */
+
 .reel .reel-window,
 .tile .tile-window{
   transition: box-shadow 220ms ease;
 }
 
-/* Selected glow */
+
 .reel.selected .reel-window{
   box-shadow:
     0 0 0 1px rgba(199,165,91,0.25),
@@ -258,7 +258,7 @@ button.primary{
     0 0 10px rgba(199,165,91,0.18);
 }
 
-/* Spin glow + blur (only while spinning) */
+
 .reel.spinning .reel-window{
   box-shadow:
     0 0 0 1px rgba(199,165,91,0.24),
@@ -273,7 +273,7 @@ button.primary{
 }
 .spinning-tile .tile-strip{ filter: blur(0.75px); }
 
-/* Party list */
+
 .party{ display:grid; gap:10px; }
 .party-row{
   display:grid;
@@ -311,3 +311,4 @@ button.primary{
 @media (max-width: 860px){
   .cards{ grid-template-columns:1fr; }
 }
+
