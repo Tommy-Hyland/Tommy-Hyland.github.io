@@ -442,16 +442,3 @@ function init() {
 }
 
 init();
-
-async function incrementViews(){
-  try{
-    const res = await fetch(
-      "https://api.countapi.xyz/hit/tommy-hyland.github.io/nightreign-randomizer"
-    );
-    const data = await res.json();
-    const el = document.getElementById("viewCount");
-    if(el) el.textContent = data.value.toLocaleString();
-  }catch(e){}
-}
-
-incrementViews();
